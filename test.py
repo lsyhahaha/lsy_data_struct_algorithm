@@ -1,29 +1,63 @@
-class Solution(object):
-    def isPowerOfTwo(self, n):
+class Solution:
+    def permuteUnique(self, nums):
         """
-        :type n: int
-        :rtype: bool
+        :type nums: List[int]
+        :rtype: List[List[int]]
         """
-        l = 0
-        r = 31
-        while(l <= r):
-            mid = (r - l) // 2 + l
-            if (2**mid == n):
-                # print(mid)
-                return True
-            elif (2**mid > n):
-                r = mid - 1
-            elif (2**mid < n):
-                l = mid + 1
 
-        return False
+        visit = [True for i in range(len(nums))]
+        print(visit)
+        tmp = nums[:] #  值传递
+        # tmp = nums # 引用传递
 
+        def dfs(position):
+            if position == len(nums):
+                res.append(tmp[:])
+                return
+
+            for index in range(0, len(nums)):
+                if visit[index]:
+                    tmp[position] = nums[index]
+                    visit[index] = False
+                    dfs(position + 1)
+                    visit[index] = True
+
+        res = []
+        dfs(0)
+        return res
 #test
 a = Solution()
-# print("ans = ", a.isPowerOfTwo(1))
-list = [2**i for i in range(31)]
-for i in list:
-    print("i = ", i , "ans = ", a.isPowerOfTwo(i - 2))
+print(a.permuteUnique([0,1,2]))
+
+
+
+
+# class Solution(object):
+#     def isPowerOfTwo(self, n):
+#         """
+#         :type n: int
+#         :rtype: bool
+#         """
+#         l = 0
+#         r = 31
+#         while(l <= r):
+#             mid = (r - l) // 2 + l
+#             if (2**mid == n):
+#                 # print(mid)
+#                 return True
+#             elif (2**mid > n):
+#                 r = mid - 1
+#             elif (2**mid < n):
+#                 l = mid + 1
+#
+#         return False
+#
+# #test
+# a = Solution()
+# # print("ans = ", a.isPowerOfTwo(1))
+# list = [2**i for i in range(31)]
+# for i in list:
+#     print("i = ", i , "ans = ", a.isPowerOfTwo(i - 2))
 
 
 

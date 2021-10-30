@@ -1,33 +1,73 @@
-class Solution:
-    def permuteUnique(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
+for i in range(15):
+    print(i)
+    i = i + 1
 
-        visit = [True for i in range(len(nums))]
-        print(visit)
-        tmp = nums[:] #  值传递
-        # tmp = nums # 引用传递
+for name in ['lsy', 'aaa', 'bbb', 'ccc']:
+    print(name)
+    name = 'dddd'
 
-        def dfs(position):
-            if position == len(nums):
-                res.append(tmp[:])
-                return
 
-            for index in range(0, len(nums)):
-                if visit[index]:
-                    tmp[position] = nums[index]
-                    visit[index] = False
-                    dfs(position + 1)
-                    visit[index] = True
 
-        res = []
-        dfs(0)
-        return res
-#test
-a = Solution()
-print(a.permuteUnique([0,1,2]))
+# class Solution(object):
+#     def singleNumber(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: List[int]
+#         """
+#         n = len(nums)
+#         if n == 2:
+#             return nums
+#         nums.sort()
+#         ret = []
+#         i = 0
+#         while i < n:
+#             if (i == n-1):
+#                 ret.append(nums[i])
+#                 break
+#             if (nums[i] == nums[i+1]):
+#                 i = i + 1
+#             else:
+#                 ret.append(nums[i])
+#
+#             i = i + 1
+#
+#         return ret
+#
+# #test
+# a = Solution()
+# print(a.singleNumber([1,1,2,2,3,4,5,5]))
+
+
+# class Solution:
+#     def permuteUnique(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: List[List[int]]
+#         """
+#
+#         visit = [True for i in range(len(nums))]
+#         print(visit)
+#         tmp = nums[:] #  值传递
+#         # tmp = nums # 引用传递
+#
+#         def dfs(position):
+#             if position == len(nums):
+#                 res.append(tmp[:])
+#                 return
+#
+#             for index in range(0, len(nums)):
+#                 if visit[index]:
+#                     tmp[position] = nums[index]
+#                     visit[index] = False
+#                     dfs(position + 1)
+#                     visit[index] = True
+#
+#         res = []
+#         dfs(0)
+#         return res
+# #test
+# a = Solution()
+# print(a.permuteUnique([0,1,2]))
 
 
 

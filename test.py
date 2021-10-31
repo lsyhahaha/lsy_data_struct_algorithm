@@ -1,10 +1,49 @@
-for i in range(15):
-    print(i)
-    i = i + 1
+# class Solution(object):
+#     def findWords(self, words):
+#         """
+#         :type words: List[str]
+#         :rtype: List[str]
+#         """
+#         one = "qwertyuiop"
+#         two = "asdfghjkl"
+#         three = "zxcvbnm"
+#
+#         a_dict = dict()
+#         for i in one:
+#             a_dict[i] = 1
+#         for i in two:
+#             a_dict[i] = 2
+#         for i in three:
+#             a_dict[i] = 3
+#         ret = []
+#         for word in words:
+#             flag = True
+#             for i in range(len(word) - 1):
+#                 s = word[i].lower()
+#                 s_next  = word[i+1].lower()
+#                 if (a_dict[s] != a_dict[s_next]):
+#                     flag = False
+#                     break
+#             if flag:
+#                 ret.append(word)
+#
+#         return ret
+#
+# a = Solution()
+# print(a.findWords(words=["Hello","Alaska","Dad","Peace"]))
 
-for name in ['lsy', 'aaa', 'bbb', 'ccc']:
-    print(name)
-    name = 'dddd'
+# a = set([1,2,3,4])
+# print(a[0])
+# # for i in a:
+# #     print(i)
+
+# for i in range(15):
+#     print(i)
+#     i = i + 1
+#
+# for name in ['lsy', 'aaa', 'bbb', 'ccc']:
+#     print(name)
+#     name = 'dddd'
 
 
 

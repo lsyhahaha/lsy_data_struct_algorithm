@@ -1,3 +1,50 @@
+from collections import deque
+class TreeNode:
+    def __init__(self, val = 0, child = []):
+        self.val = val
+        self.child = child
+class Solution:
+    def minimumOperations(self, nums, start, goal):
+        q = deque()
+        q.append(TreeNode(start))
+        ret = 0
+        aa = 0
+        while len(q):
+            n = len(q)
+            for i in range(n):
+                cur = q.pop()
+                print(cur.val)
+                if cur.val == goal:
+                    return ret
+                for num in nums:
+                    q.append(TreeNode(cur.val + num))
+                    q.append(TreeNode(cur.val - num))
+                    q.append(TreeNode(cur.val ^ num))
+
+a = Solution()
+print(a.minimumOperations([1, 3], start=6, goal=4))
+import random
+# ret = []
+# for i in range(10000):
+#     ret.append(random.randint(1,100))
+#
+# print(ret)
+
+
+# class Solution:
+#     def smallestEqual(self, nums):
+#         ret = []
+#         for i in range(len(nums)):
+#             if i % 10 == nums[i]:
+#                 ret.append(i)
+#         if (len(ret) == 0):
+#             return -1
+#         ret.sort()
+#         return ret[0]
+
+
+
+
 # class Solution(object):
 #     def findWords(self, words):
 #         """

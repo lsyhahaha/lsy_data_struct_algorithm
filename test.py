@@ -1,29 +1,58 @@
-from collections import deque
-class TreeNode:
-    def __init__(self, val = 0, child = []):
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
         self.val = val
-        self.child = child
-class Solution:
-    def minimumOperations(self, nums, start, goal):
-        q = deque()
-        q.append(TreeNode(start))
-        ret = 0
-        aa = 0
-        while len(q):
-            n = len(q)
-            for i in range(n):
-                cur = q.pop()
-                print(cur.val)
-                if cur.val == goal:
-                    return ret
-                for num in nums:
-                    q.append(TreeNode(cur.val + num))
-                    q.append(TreeNode(cur.val - num))
-                    q.append(TreeNode(cur.val ^ num))
+        self.next = next
 
+class Solution:
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        behind = head
+        ret = ListNode(0, head)
+        pre = ListNode(0, head)
+        while n > 1:
+            behind = behind.next
+            n = n - 1
+
+        while True:
+            if (behind.next is None):
+                pre.next = head.next
+                break
+
+            behind = behind.next
+            pre = pre.next
+            head = head.next
+
+        return ret.next
 a = Solution()
-print(a.minimumOperations([1, 3], start=6, goal=4))
-import random
+
+print(a.removeNthFromEnd(ListNode(1), 1))
+
+# from collections import deque
+# class TreeNode:
+#     def __init__(self, val = 0, child = []):
+#         self.val = val
+#         self.child = child
+# class Solution:
+#     def minimumOperations(self, nums, start, goal):
+#         q = deque()
+#         q.append(TreeNode(start))
+#         ret = 0
+#         aa = 0
+#         while len(q):
+#             n = len(q)
+#             for i in range(n):
+#                 cur = q.pop()
+#                 print(cur.val)
+#                 if cur.val == goal:
+#                     return ret
+#                 for num in nums:
+#                     q.append(TreeNode(cur.val + num))
+#                     q.append(TreeNode(cur.val - num))
+#                     q.append(TreeNode(cur.val ^ num))
+#
+# a = Solution()
+# print(a.minimumOperations([1, 3], start=6, goal=4))
+# import random
 # ret = []
 # for i in range(10000):
 #     ret.append(random.randint(1,100))

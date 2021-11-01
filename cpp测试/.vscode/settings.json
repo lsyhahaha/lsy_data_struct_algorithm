@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.py": "python",
-        "algorithm": "cpp",
-        "map": "cpp",
-        "cstring": "cpp",
-        "typeinfo": "cpp"
-    }
-}

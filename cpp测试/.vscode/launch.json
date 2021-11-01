@@ -1,0 +1,15 @@
+{
+    "configurations": [
+    {
+        "name": "(Windows) 启动",
+        "type": "cppvsdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/test.exe",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "console": "externalTerminal"
+    }
+    ]
+}

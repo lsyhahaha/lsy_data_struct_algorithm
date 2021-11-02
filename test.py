@@ -1,31 +1,104 @@
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
 class Solution:
-    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
-        behind = head
-        ret = ListNode(0, head)
-        pre = ListNode(0, head)
-        while n > 1:
-            behind = behind.next
-            n = n - 1
+    def check(self, s):
+        i = 0
+        j = len(s) - 1
+        while (i < j):
+            if (s[i] != s[j]):
+                return False
+            i = i + 1
+            j = j - 1
 
-        while True:
-            if (behind.next is None):
-                pre.next = head.next
-                break
+        return True
 
-            behind = behind.next
-            pre = pre.next
-            head = head.next
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        if n == 0:
+            return ''
+        if n == 1:
+            return s
+        ret = 0
+        res = ""
+        for i in range(n):
+            for j in range(i, n):
+                cur_s = s[i:j+1]
+                if self.check(cur_s):
+                    if ret < j - i + 1:
+                        ret = j - i + 1
+                        res = cur_s
 
-        return ret.next
+        return res
+
 a = Solution()
+s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+print(a.longestPalindrome(s))
 
-print(a.removeNthFromEnd(ListNode(1), 1))
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+#
+# class LinkList:
+#     def __init__(self, list):
+#         self.head = ListNode()
+#         ret = self.head
+#         for a in list:
+#             ret = ListNode(a)
+#             ret = ret.next
+#
+# class Solution:
+#     def deleteDuplicates(self, head: ListNode) -> ListNode:
+#         ret = ListNode(0, head)
+#         pre = ListNode(0, head)
+#         cur = head
+#         next = cur.next
+#
+#         while (next):
+#             while (next is not None and cur.val == next.val):
+#                 next = next.next
+#             pre.next = next
+#             # cur.next = next
+#
+#             print(next.val)
+#             cur = next
+#             next = cur.next
+#
+#         return ret.next
+# a = Solution()
+# linklist = LinkList([1,2,3,3,4,4,5])
+# a.deleteDuplicates(linklist.head)
+# head = linklist.head
+# while head:
+#     print(head.val)
+#     head = head.next
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+#
+# class Solution:
+#     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+#         behind = head
+#         ret = ListNode(0, head)
+#         pre = ListNode(0, head)
+#         while n > 1:
+#             behind = behind.next
+#             n = n - 1
+#
+#         while True:
+#             if (behind.next is None):
+#                 pre.next = head.next
+#                 break
+#
+#             behind = behind.next
+#             pre = pre.next
+#             head = head.next
+#
+#         return ret.next
+# a = Solution()
+#
+# print(a.removeNthFromEnd(ListNode(1), 1))
 
 # from collections import deque
 # class TreeNode:
